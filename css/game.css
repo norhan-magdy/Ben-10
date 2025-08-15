@@ -1,0 +1,136 @@
+.block4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.block6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+.block8 {
+  grid-template-columns: repeat(8, 1fr);
+}
+.container {
+  height: 100vh;
+  align-content: center;
+  align-items: center;
+}
+
+/* game-blocks */
+.memory-game-blocks {
+  display: grid;
+  gap: 5px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.memory-game-blocks .game-block {
+  padding-bottom: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+/* face  */
+.memory-game-blocks .game-block .face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border: 3px solid #289c24be;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.block4  .game-block .front {
+  background-color: rgba(115, 133, 150, 0.212);
+  background-image: url(../assets/easy/logo.png);
+  background-attachment: fixed;
+  background-position: center;
+}
+.block6 .game-block .front {
+  background-color: rgb(1, 25, 10);
+  background-image: url(../assets/medium/logo.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.block8 .game-block .front {
+  background-image: url(../assets/hard/logo.jpg);
+  background-size: cover;
+  background-position: 20%;
+}
+/*back */
+.memory-game-blocks .game-block .back {
+  transform: rotateY(180deg);
+}
+
+/* functions */
+.memory-game-blocks .game-block.is-flipped {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.memory-game-blocks .game-block.is-flipped:hover,
+.back {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.memory-game-blocks .game-block.has-match {
+  transform: rotateY(180deg);
+  pointer-events: none;
+  animation: magic 0.8s;
+  position: relative;
+  z-index: 1;
+}
+
+/* design chiking */
+.memory-game-blocks .game-block.is-error {
+  transform: rotateY(180deg);
+  pointer-events: none;
+  animation: magic2 0.8s;
+  position: relative;
+  z-index: 1;
+}
+.memory-game-blocks .game-block img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.memory-game-blocks .game-block:hover {
+  transform: scale(1.05);
+}
+.memory-game-blocks.no-clicking {
+  pointer-events: none;
+}
+
+@keyframes magic {
+  0% {
+    transform: rotateY(180deg) scale(1);
+    box-shadow: 0 0 0 rgba(40, 156, 36, 0.8);
+  }
+  50% {
+    transform: rotateY(180deg) scale(1.1);
+    box-shadow: 0 0 20px rgba(40, 156, 36, 0.8);
+  }
+  100% {
+    transform: rotateY(180deg) scale(1);
+    box-shadow: 0 0 0 rgba(40, 156, 36, 0.8);
+  }
+}
+@keyframes magic2 {
+  0%, 100% {
+    transform: rotateY(180deg) translateX(0);
+    border-color: #ff4d4d;
+  }
+  20%, 60% {
+    transform: rotateY(180deg) translateX(10px);
+  }
+  40%, 80% {
+    transform: rotateY(180deg) translateX(-10px);
+  }
+}

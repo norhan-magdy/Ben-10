@@ -255,12 +255,30 @@ setTimeout(startEnergyPulses, 3000);
 animate();
 
 const playBtn = document.getElementById("play-btn");
+const logoImg = document.getElementById("logo");
 const benCharImg = document.querySelector(".char-ben");
 const alienCharImg = document.querySelector(".char-alien");
 let currentIndex = 0;
 const levelsLogos = ["ben_10", "Ben_10_Omnitrix", "ben_10_ultimate_alien"];
-const alienChars = ["char-alien", "char-alien-omnitrix", "char-alien-ultimatrix"];
-const benChars = ["char-ben", "char-ben-omnitrix", "char-ben-ultimatrix","char-ben"];
+const alienChars = [
+  "char-alien",
+  "char-alien-omnitrix",
+  "char-alien-ultimatrix",
+];
+const benChars = [
+  "char-ben",
+  "char-ben-omnitrix",
+  "char-ben-ultimatrix",
+  "char-ben",
+];
+
+if (logoImg) {
+  logoImg.addEventListener("click", () => {
+    const projectRoot = `${window.location.origin}${window.location.pathname.split('/').slice(0, -1).join('/')}/`
+    window.location.href = projectRoot;
+
+  });
+}
 
 if (playBtn) {
   document.querySelector(".pressione").addEventListener("click", function (e) {
@@ -279,8 +297,7 @@ if (playBtn) {
     img.classList.add("transform-effect");
     alienCharImg.classList.add("cartoon-fly-out");
     benCharImg.classList.add("cartoon-fly-out");
-    
-    
+
     // 3. تغيير الصورة بعد انتهاء التحول
     setTimeout(() => {
       alienCharImg.classList.add("easgo");
@@ -318,14 +335,11 @@ if (playBtn) {
       }, 1000);
     }
   }
-  playBtn.addEventListener("click", () => {
-    if (currentIndex === 0) {
-      window.location.href = `${window.location.origin}/easy.html`;
-    } else if (currentIndex === 1) {
-      window.location.href = `${window.location.origin}/medium.html`;
-    } else {
-      window.location.href = `${window.location.origin}/hard.html`;
-    }
-  });
+  const projectRoot = window.location.pathname.split("/")[1];
 
+  playBtn.addEventListener("click", () => {
+    let level =
+      currentIndex === 0 ? "easy" : currentIndex === 1 ? "medium" : "hard";
+    window.location.href = `${projectRoot}/${level}.html`;
+  });
 }

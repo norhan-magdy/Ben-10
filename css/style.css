@@ -41,11 +41,12 @@ body {
 .logo img {
   margin: 20px;
   width: 50px;
+  cursor: pointer;
 }
 
 .arrow-container {
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, 25%);
   display: flex;

@@ -1,7 +1,7 @@
 // images for the game
 console.log(window.location.pathname);
 let cardData;
-if (window.location.pathname === "/easy.html") {
+if (window.location.pathname.endsWith("easy.html")) {
   cardData = [
     {
       alien: "Diamondhead",
@@ -45,7 +45,7 @@ if (window.location.pathname === "/easy.html") {
     },
   ];
 }
-if (window.location.pathname === "/medium.html") {
+if (window.location.pathname.endsWith("medium.html")) {
   cardData = [
     {
       alien: "AlienX",
@@ -139,8 +139,8 @@ if (window.location.pathname === "/medium.html") {
     },
   ];
 }
-if (window.location.pathname === "/hard.html") {
-    cardData = [
+if  (window.location.pathname.endsWith("hard.html")) {
+  cardData = [
     {
       alien: "Aggregor",
       image: "assets/hard/Aggregor.jpg",
@@ -301,7 +301,7 @@ if (window.location.pathname === "/hard.html") {
       image: "assets/hard/WaterHazard.jpg",
       alt: "WaterHazard",
     },
-  ]
+  ];
 }
 
 let blocksContainer = document.querySelector("#gameBlocks");

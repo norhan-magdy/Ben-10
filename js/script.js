@@ -274,9 +274,10 @@ const benChars = [
 
 if (logoImg) {
   logoImg.addEventListener("click", () => {
-    const projectRoot = `${window.location.origin}${window.location.pathname.split('/').slice(0, -1).join('/')}/`
+    const projectName = window.location.pathname.split("/")[1];
+    const isGitHubPages = window.location.hostname.includes("github.io");
+    const projectRoot = isGitHubPages ? `/${projectName}/` : "/";
     window.location.href = projectRoot;
-
   });
 }
 
@@ -335,11 +336,13 @@ if (playBtn) {
       }, 1000);
     }
   }
-  const projectRoot = window.location.pathname.split("/")[1];
+  const projectName = window.location.pathname.split("/")[1];
+  const isGitHubPages = window.location.hostname.includes("github.io");
+  const projectRoot = isGitHubPages ? `/${projectName}/` : "/";
 
   playBtn.addEventListener("click", () => {
     let level =
       currentIndex === 0 ? "easy" : currentIndex === 1 ? "medium" : "hard";
-    window.location.href = `${projectRoot}/${level}.html`;
+    window.location.href = `${projectRoot}${level}.html`;
   });
 }

@@ -262,7 +262,7 @@ let currentIndex = 0;
 const levelsLogos = ["ben_10", "Ben_10_Omnitrix", "ben_10_ultimate_alien"];
 const alienChars = [
   "char-alien",
-  "char-alien-omnitrix",
+  "char-alien-omnitrix2",
   "char-alien-ultimatrix",
 ];
 const benChars = [
@@ -285,21 +285,17 @@ if (playBtn) {
   document.querySelector(".pressione").addEventListener("click", function (e) {
     const img = this;
     const button = img.parentElement;
-    // منع النقر المتكرر أثناء التحول
     if (button.classList.contains("transforming")) return;
     button.classList.add("transforming");
 
-    // 1. إنشاء الفقاعات الخضراء
     createBubbles(button);
 
-    // 2. تطبيق تأثير التحول
     alienCharImg.classList.remove("easgo");
     benCharImg.classList.remove("easgo");
     img.classList.add("transform-effect");
     alienCharImg.classList.add("cartoon-fly-out");
     benCharImg.classList.add("cartoon-fly-out");
 
-    // 3. تغيير الصورة بعد انتهاء التحول
     setTimeout(() => {
       alienCharImg.classList.add("easgo");
       benCharImg.classList.add("easgo");
@@ -312,7 +308,7 @@ if (playBtn) {
       benCharImg.src = `assets/${benChars[currentIndex]}.png`;
       img.style.opacity = 1;
       button.classList.remove("transforming");
-    }, 1500); // يجب أن يتطابق هذا مع مدة animation الـCSS
+    }, 1500);
   });
 
   function createBubbles(container) {
@@ -320,7 +316,6 @@ if (playBtn) {
       const bubble = document.createElement("div");
       bubble.classList.add("bubble");
 
-      // وضع عشوائي للفقاعات
       bubble.style.left = `${Math.random() * 100}%`;
       bubble.style.top = `${Math.random() * 100}%`;
       bubble.style.opacity = Math.random();
@@ -330,7 +325,6 @@ if (playBtn) {
 
       container.appendChild(bubble);
 
-      // إزالة الفقاعة بعد انتهاء animation
       setTimeout(() => {
         bubble.remove();
       }, 1000);

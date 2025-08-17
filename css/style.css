@@ -31,7 +31,8 @@ body {
   padding: 0;
   overflow: hidden;
   background: #000;
-  font-family: "Righteous", sans-serif;
+  /* font-family: "Righteous", sans-serif; */
+  font-family: "CCTimelord", sans-serif;
 }
 
 .logo {

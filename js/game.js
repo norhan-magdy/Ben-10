@@ -1,5 +1,4 @@
 // images for the game
-console.log(window.location.pathname);
 let cardData;
 if (window.location.pathname.endsWith("easy.html")) {
   cardData = [
@@ -139,7 +138,7 @@ if (window.location.pathname.endsWith("medium.html")) {
     },
   ];
 }
-if  (window.location.pathname.endsWith("hard.html")) {
+if (window.location.pathname.endsWith("hard.html")) {
   cardData = [
     {
       alien: "Aggregor",
@@ -372,12 +371,14 @@ function checkMatchingBlocks(firstBlock, secondBlock) {
   ) {
     firstBlock.classList.add("has-match");
     secondBlock.classList.add("has-match");
+    checkForWin();
   } else {
     setTimeout(() => {
       firstBlock.classList.remove("is-flipped");
       secondBlock.classList.remove("is-flipped");
     }, deuration);
   }
+  checkForWin();
 }
 
 function flipBlock(block) {

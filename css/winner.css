@@ -1,0 +1,140 @@
+#win-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#win-message.hidden {
+  display: none;
+}
+
+.message-box {
+  position: absolute;
+  min-width: 450px;
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+
+.message-box h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.message-box p {
+  font-size: 18px;
+  margin: 8px 0;
+}
+
+#restart-btn {
+  font-family: "CCTimelord", sans-serif;
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--green-medium);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#restart-btn:hover {
+  background-color: var(--green-bright);
+}
+
+/* sumo-slammer-card */
+.sumo-card {
+  margin-bottom: 380px;
+  width: 310px;
+  height: 435px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.sumo-front,
+.sumo-back {
+  position: absolute;
+  width: 35%;
+  height: 35%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateY(0deg);
+  transform-origin: center;
+}
+
+.sumo-back {
+  transform: translate(-50%, -50%) rotateY(180deg);
+}
+
+.sumo-card.auto-rotate .sumo-front {
+  animation: rotateFront 6s infinite linear;
+}
+
+.sumo-card.auto-rotate .sumo-back {
+  animation: rotateBack 6s infinite linear;
+}
+
+@keyframes rotateFront {
+  0% {
+    transform: translate(-50%, -50%) rotateY(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotateY(180deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateY(360deg);
+  }
+}
+
+@keyframes rotateBack {
+  0% {
+    transform: translate(-50%, -50%) rotateY(180deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotateY(360deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateY(540deg);
+  }
+}
+
+.fall {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  overflow: hidden;
+}
+
+.sumo,
+.food {
+  position: absolute;
+  animation: fallAnimation linear infinite;
+}
+
+@keyframes fallAnimation {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}

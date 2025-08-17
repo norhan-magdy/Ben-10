@@ -6,11 +6,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+      href="https://db.onlinewebfonts.com/c/1c9478b7d31dc8f5c4f6b8b5f69148d2?family=CCTimelord"
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="ben_10_alien_force.png" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/winner.css" />
     <link rel="stylesheet" href="css/game.css" />
     <title>BEN Easy</title>
   </head>
@@ -22,8 +23,21 @@
     <div class="container">
       <div class="memory-game-blocks block8" id="gameBlocks"></div>
     </div>
+    <div id="win-message" class="hidden">
+      <div class="fall"></div>
+      <div class="message-box">
+        <h2>🎉 You Win!</h2>
+        <p>Time: <span id="win-time">0</span>s</p>
+        <p>Tries: <span id="win-tries">0</span></p>
+        <div
+          id="best-score"
+          style="margin-top: 10px; font-size: 14px; color: #444"
+        ></div>
+        <button id="restart-btn">Play Again</button>
+      </div>
+    </div>
   </body>
   <script src="js/script.js"></script>
   <script src="js/game.js"></script>
-  <!-- <script src="js/main.js"></script> -->
+  <script src="js/main.js"></script>
 </html>

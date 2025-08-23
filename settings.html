@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://db.onlinewebfonts.com/c/79f12f40967a6371bc5b83c1584fb017?family=BadaBoom+BB+V2"
+      rel="stylesheet"
+    />
+    <link
+      href="https://db.onlinewebfonts.com/c/1c9478b7d31dc8f5c4f6b8b5f69148d2?family=CCTimelord"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="ben_10_alien_force.png" />
+    <title>BEN 10</title>
+  </head>
+  <body>
+    <canvas id="starfield"></canvas>
+    <div class="logo">
+      <img id="logo" src="ben_10_alien_force.png" alt="ben 10 logo" />
+    </div>
+    <!--  -->
+    <div class="settings-panel">
+      <h1 class="settings-title">Settings</h1>
+      <div class="sound-control">
+        <h2>Sound Control</h2>
+        <div class="sound-buttons">
+          <button class="sound-circle"></button>
+          <button class="sound-circle"></button>
+          <button class="sound-circle"></button>
+          <button class="sound-circle"></button>
+          <button class="sound-circle"></button>
+          <button class="sound-circle"></button>
+        </div>
+      </div>
+      <div class="slider-section">
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value="20"
+          class="slider"
+          id="background-music"
+        />
+        <p>background music OFF/ON :</p>
+      </div>
+      <div class="circle-control" id="circle-control">
+        <div class="circle-btn"></div>
+      </div>
+      <p>Change music <span>♫</span></p>
+      <div class="control-button" id="save">save</div>
+    </div>
+    <!--  -->
+  </body>
+  <script src="js/script.js"></script>
+  <script src="js/sound.js"></script>
+</html>

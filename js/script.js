@@ -246,6 +246,9 @@ function startEnergyPulses() {
 
 // Handle resizing
 window.addEventListener("resize", resizeCanvas);
+window.addEventListener("orientationchange", () => {
+  setTimeout(resizeCanvas, 200);
+});
 
 // Initialize
 resizeCanvas();
@@ -256,10 +259,12 @@ animate();
 
 const playBtn = document.getElementById("play-btn");
 const logoImg = document.getElementById("logo");
+const settingsImg = document.getElementById("settings");
 const benCharImg = document.querySelector(".char-ben");
 const alienCharImg = document.querySelector(".char-alien");
 let currentIndex = 0;
 const levelsLogos = ["ben_10", "Ben_10_Omnitrix", "ben_10_ultimate_alien"];
+const levelsSound = ["ben_10", "Ben_10_Omnitrix", "ben_10_ultimate_alien"];
 const alienChars = [
   "char-alien",
   "char-alien-omnitrix2",
@@ -272,12 +277,19 @@ const benChars = [
   "char-ben",
 ];
 
+const projectName = window.location.pathname.split("/")[1];
+const isGitHubPages = window.location.hostname.includes("github.io");
+const projectRoot = isGitHubPages ? `/${projectName}/` : "/";
+
 if (logoImg) {
   logoImg.addEventListener("click", () => {
-    const projectName = window.location.pathname.split("/")[1];
-    const isGitHubPages = window.location.hostname.includes("github.io");
-    const projectRoot = isGitHubPages ? `/${projectName}/` : "/";
     window.location.href = projectRoot;
+  });
+}
+
+if (settingsImg) {
+  settingsImg.addEventListener("click", () => {
+    window.location.href = `${projectRoot}settings.html`;
   });
 }
 
@@ -303,9 +315,11 @@ if (playBtn) {
       alienCharImg.classList.remove("cartoon-fly-out");
       benCharImg.classList.remove("cartoon-fly-out");
       currentIndex = (currentIndex + 1) % levelsLogos.length;
-      img.src = `assets/${levelsLogos[currentIndex]}.png`;
-      alienCharImg.src = `assets/${alienChars[currentIndex]}.png`;
-      benCharImg.src = `assets/${benChars[currentIndex]}.png`;
+      img.src = `assets/media/${levelsLogos[currentIndex]}.png`;
+      const sound = new Audio(`assets/media/${levelsSound[currentIndex]}.mp3`);
+      sound.play().catch((err) => console.log("Sound error:", err));
+      alienCharImg.src = `assets/media/${alienChars[currentIndex]}.png`;
+      benCharImg.src = `assets/media/${benChars[currentIndex]}.png`;
       img.style.opacity = 1;
       button.classList.remove("transforming");
     }, 1500);
@@ -330,9 +344,6 @@ if (playBtn) {
       }, 1000);
     }
   }
-  const projectName = window.location.pathname.split("/")[1];
-  const isGitHubPages = window.location.hostname.includes("github.io");
-  const projectRoot = isGitHubPages ? `/${projectName}/` : "/";
 
   playBtn.addEventListener("click", () => {
     let level =

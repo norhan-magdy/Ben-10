@@ -40,7 +40,6 @@ flipBlock = function (block) {
   }
 };
 
-// نبدأ التايمر أول ما أول كارت يتقلب
 let gameStarted = false;
 blocksContainer.addEventListener(
   "click",

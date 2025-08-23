@@ -13,7 +13,7 @@ function Sound(src) {
   this.stop = () => this.sound.pause();
 }
 
-const mySound = new Sound("../assets/audio/classic.mp3");
+const mySound = new Sound(`${projectRoot}assets/audio/classic.mp3`);
 mySound.sound.volume = 0.3;
 
 function saveSoundState() {
@@ -51,14 +51,14 @@ document.addEventListener("DOMContentLoaded", () => {
       mySound.sound.src.includes(t)
     );
     const nextTrack = tracks[(currentTrackIndex + 1) % tracks.length];
-    mySound.sound.src = `../assets/audio/${nextTrack}.mp3`;
+    mySound.sound.src = `${projectRoot}assets/audio/${nextTrack}.mp3`;
     saveSoundState();
     mySound.play();
   });
 
   saveBtn?.addEventListener("click", () => {
     saveSoundState();
-    window.location.href = `${window.location.origin}/index.html`;
+    window.location.href = `${projectRoot}`;
   });
 });
 
